@@ -5,12 +5,12 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="luckyzj95.github.io">
+  <link rel="dns-prefetch" href="luckyzji.github.io">
   <title>LuckyZJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="LuckyZJ">
-<meta property="og:url" content="luckyzj95.github.io&#x2F;index.html">
+<meta property="og:url" content="luckyzji.github.io&#x2F;index.html">
 <meta property="og:site_name" content="LuckyZJ">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -148,6 +148,76 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-快速幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="archive-article-date">
+  	<time datetime="2020-05-01T13:41:14.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>通常情况求，我们求 a^b^都习惯按照如下方式做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int myPow(int a,int b)&#123;</span><br><span class="line">    int res=1;</span><br><span class="line">    for(int i=0;i&lt;b;i++)&#123;</span><br><span class="line">        res*=a;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a,b;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    cout&lt;&lt;pow(a,b)&lt;&lt;endl;//直接调用pow()函数</span><br><span class="line">    cout&lt;&lt;myPow(a,b)&lt;&lt;endl;//自定义myPow()函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，这样做，在做比较大的求幂时，可能花的时间会比较多，我们有没有更快的方法呢？当然有，我们接着往下看。<br>比如在求2^10^,我们可以转换成求2^5^*2^5^的形式，这样就比直接求10次快。快速幂就是用的这种思路。<br>我们都知道，数字以二进制的方式存储在计算机中，比如10=(1010)<del>2</del>，所以我们在求幂的时候，可以考二进制。我们看代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int fast_pow(int a,int b)&#123;</span><br><span class="line">    int res=1;</span><br><span class="line">    while(b)&#123;</span><br><span class="line">        if(b&amp;1)&#123;    //b的二进制最低位与1算数与。</span><br><span class="line">            res=res*a;</span><br><span class="line">        &#125;</span><br><span class="line">        b&gt;&gt;=1;  //b右移一位。</span><br><span class="line">        a=a*a;  //b每右移一位，a就翻一倍。</span><br><span class="line">        /*如2的10次幂 10=（1010)2</span><br><span class="line">        *1）0&amp;1=0; b=101;a=a*a=4;</span><br><span class="line">        *2）1&amp;1=1;res=res*a=4;b=10;a=a*a=16;</span><br><span class="line">        *3）0&amp;1=0;b=1;a=a*a=256;</span><br><span class="line">        *4）1&amp;1=1;res=res*a=1024;b=0(退出循环)。</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a,b;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    cout&lt;&lt;fast_pow(a,b)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从这上面的例子，我们可以看出快速幂能使求幂的的效率高不少。接下来我们看一个快速幂的例子：<br>原题链接：<a href="http://acm.xidian.edu.cn/problem.php?id=1027" target="_blank" rel="noopener">XDOJ1027</a><br>题目：<br>北雷老中医不懂 Fibonacci，于是他定义了一种名叫Feibonaqi的数列，数列满足以下要求：<br>1.f(0)=0,f(1)=1<br>2.f(n)=2f(n-1)+f(n-2),n&gt;1<br>那么问题来了，这个数列的第n项是多少呢？<br>（不为难大家用高精度了，你只需要将结果对1,000,000,007取模后输出即可）<br>输入：<br>多组数据每组数据一行，包含一个整数n，1&lt;n&lt;1,000,000,000<br>输出：<br>每组数据输出一个整数，即为f(n)对1,000,000,007取模后的结果<br>分析：<br>从题目中可以看出，数据范围比较大，如果是用递归或者递推方式写，肯定会超时，所以我们应该要考虑其他的方法。我们就可以考虑快速幂的方法。不过，这道题要用到矩阵乘法，用矩阵快速幂。<br>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#define MOD 1000000007</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">struct matrix&#123;</span><br><span class="line">	ll m[3][3];</span><br><span class="line">&#125;Mat,unit;</span><br><span class="line">ll a[3]=&#123;0,1,2&#125;;</span><br><span class="line"></span><br><span class="line">matrix multi(matrix a,matrix b)&#123;</span><br><span class="line">    matrix res;</span><br><span class="line">    ll x;</span><br><span class="line">    ll i,j,k;</span><br><span class="line">    for(i=0;i&lt;3;i++)&#123;</span><br><span class="line">        for(j=0;j&lt;3;j++)&#123;</span><br><span class="line">            x=0;</span><br><span class="line">            for(k=0;k&lt;3;k++)&#123;</span><br><span class="line">                x=(x+((ll)a.m[i][k]*(ll)b.m[k][j]))%MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            res.m[i][j]=x%MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Init()&#123;</span><br><span class="line">    Mat.m[0][0]=2;Mat.m[0][1]=1;Mat.m[0][2]=0;</span><br><span class="line">    Mat.m[1][0]=1;Mat.m[1][1]=0;Mat.m[1][2]=1;</span><br><span class="line">    Mat.m[2][0]=0;Mat.m[2][1]=0;Mat.m[2][2]=0;</span><br><span class="line">    for(int i=0;i&lt;3;i++)&#123;</span><br><span class="line">        unit.m[i][i]=1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">matrix pow_matrix(matrix a,ll n)&#123;</span><br><span class="line">    matrix res=unit;</span><br><span class="line">    while(n)&#123;</span><br><span class="line">        if(n&amp;1)res=multi(res,a);</span><br><span class="line">        a=multi(a,a);</span><br><span class="line">        n=n&gt;&gt;1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll Feibonaqi(ll n)&#123;</span><br><span class="line">    if(n==0)return a[0];</span><br><span class="line">    if(n==1)return a[1];</span><br><span class="line">    if(n==2)return a[2];</span><br><span class="line">    matrix res=pow_matrix(Mat,n-2);</span><br><span class="line">    return (a[2]*res.m[0][0]+a[1]*res.m[1][0])%MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    Init();</span><br><span class="line">    ll n;</span><br><span class="line">	while(cin&gt;&gt;n)&#123;  </span><br><span class="line">		cout&lt;&lt;Feibonaqi(n)&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a<del>2</del> a<del>1</del> a<del>0</del>=[ 2 , 1 , 0 ]，Feibonaqi前三项<br>Mat:根据Feibonaqi推出的矩阵<br> 2 | 1 |  0<br>—|—|—<br> 1 | 0 | 0<br>0  | 0 | 0</p>
+<p>a*Mat^n-2^得到的一行三列的矩阵的第0项就是要求的值</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-排序算法（冒泡、选择、插入、归并）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
