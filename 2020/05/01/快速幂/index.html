@@ -10,16 +10,16 @@
 <title>快速幂 - LuckyZJ</title>
 
 
-    <meta name="description" content="快速幂通常情况求，我们求ab都习惯按照如下方式做：">
+    <meta name="description" content="通常情况求，我们求ab都习惯按照如下方式做：">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速幂">
 <meta property="og:url" content="luckyzji.github.io&#x2F;2020&#x2F;05&#x2F;01&#x2F;%E5%BF%AB%E9%80%9F%E5%B9%82&#x2F;index.html">
 <meta property="og:site_name" content="LuckyZJ">
-<meta property="og:description" content="快速幂通常情况求，我们求ab都习惯按照如下方式做：">
+<meta property="og:description" content="通常情况求，我们求ab都习惯按照如下方式做：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2020-05-01T19:16:22.980Z">
+<meta property="og:updated_time" content="2020-05-01T19:50:19.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="&#x2F;images&#x2F;og_image.png">
 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 511 个字)
+                    3 分钟 读完 (大约 508 个字)
                 </span>
                 
                 
@@ -158,7 +158,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>通常情况求，我们求a<sup>b</sup>都习惯按照如下方式做：<a id="more"></a></p>
+            <p>通常情况求，我们求a<sup>b</sup>都习惯按照如下方式做：<a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int myPow(int a,int b)&#123;</span><br><span class="line">    int res=1;</span><br><span class="line">    for(int i=0;i&lt;b;i++)&#123;</span><br><span class="line">        res*=a;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a,b;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    cout&lt;&lt;pow(a,b)&lt;&lt;endl;//直接调用pow()函数</span><br><span class="line">    cout&lt;&lt;myPow(a,b)&lt;&lt;endl;//自定义myPow()函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是，这样做，在做比较大的求幂时，可能花的时间会比较多，我们有没有更快的方法呢？当然有，我们接着往下看。<br>比如在求2<sup>10</sup>,我们可以转换成求2<sup>5</sup>*2<sup>5</sup>的形式，这样就比直接求10次快。快速幂就是用的这种思路。<br>我们都知道，数字以二进制的方式存储在计算机中，比如10=(1010)<sub>2</sub>，所以我们在求幂的时候，可以考二进制。我们看代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int fast_pow(int a,int b)&#123;</span><br><span class="line">    int res=1;</span><br><span class="line">    while(b)&#123;</span><br><span class="line">        if(b&amp;1)&#123;    //b的二进制最低位与1算数与。</span><br><span class="line">            res=res*a;</span><br><span class="line">        &#125;</span><br><span class="line">        b&gt;&gt;=1;  //b右移一位。</span><br><span class="line">        a=a*a;  //b每右移一位，a就翻一倍。</span><br><span class="line">        /*如2的10次幂 10=（1010)2</span><br><span class="line">        *1）0&amp;1=0; b=101;a=a*a=4;</span><br><span class="line">        *2）1&amp;1=1;res=res*a=4;b=10;a=a*a=16;</span><br><span class="line">        *3）0&amp;1=0;b=1;a=a*a=256;</span><br><span class="line">        *4）1&amp;1=1;res=res*a=1024;b=0(退出循环)。</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a,b;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    cout&lt;&lt;fast_pow(a,b)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -272,7 +272,7 @@ a*Mat<sup>n-2</sup>得到的一行三列的矩阵的第0项就是要求的值
                     
                     
                     <p class="is-size-6 is-block">
-                        Java、整天划水
+                        Java、算法划水学习ing
                     </p>
                     
                     
