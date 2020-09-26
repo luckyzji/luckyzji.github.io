@@ -7,19 +7,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>HTTP与HTTPS - LuckyZJ</title>
+<title>分类: 数据结构与算法 - LuckyZJ</title>
 
 
-    <meta name="description" content="HTTP与HTTPS1. HTTP">
-<meta name="keywords" content="http,https">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HTTP与HTTPS">
-<meta property="og:url" content="luckyzji.github.io&#x2F;2020&#x2F;09&#x2F;11&#x2F;HTTP%E4%B8%8EHTTPS&#x2F;index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="LuckyZJ">
+<meta property="og:url" content="luckyzji.github.io&#x2F;categories&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="LuckyZJ">
-<meta property="og:description" content="HTTP与HTTPS1. HTTP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2020-09-11T11:47:20.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="&#x2F;images&#x2F;og_image.png">
 
@@ -79,7 +75,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/img/logo.png" alt="HTTP与HTTPS" height="28">
+                <img src="/images/img/logo.png" alt="LuckyZJ" height="28">
             
             </a>
         </div>
@@ -128,24 +124,36 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">数据结构与算法</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-09-11T03:25:03.000Z">2020-09-11</time>
+                <time class="level-item has-text-grey" datetime="2020-09-26T16:00:00.000Z">2020-09-27</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 907 个字)
+                    6 分钟 读完 (大约 919 个字)
                 </span>
                 
                 
@@ -154,128 +162,86 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                HTTP与HTTPS
+                <a class="has-link-black-ter" href="/2020/09/27/BinaryTreeTraversal/">Binary Tree Traversal</a>
             
         </h1>
         <div class="content">
-            <h2 id="HTTP与HTTPS"><a href="#HTTP与HTTPS" class="headerlink" title="HTTP与HTTPS"></a>HTTP与HTTPS</h2><h3 id="1-HTTP"><a href="#1-HTTP" class="headerlink" title="1. HTTP  "></a>1. HTTP  <a id="more"></a></h3><ul>
-<li>http：超文本传输协议（hypertext transfer protocol）,用于请求web网页，是以明文的的方式传输，默认端口是80（ftp：21&emsp;https：433）。  </li>
-<li>http请求：  在客户端浏览器与服务器建立TCP连接后，浏览器向服务器发送http请求（请求方法：GET、POST、PUT等），之后服务器进行响应。</li>
-<li>常见的请求：  <ul>
-<li>GET：从服务器获取资源</li>
-<li>POST：对应GET,向服务器提交数据进行处理请求</li>
-<li>PUT: 用来传输文件，文件内容放进报文主体中</li>
-<li>HEAD：和GET类似，但是不反回请求的实体数据，只会返回响应头</li>
-</ul>
-</li>
-<li>不同版本：  <ul>
-<li>http/0.9： GET</li>
-<li>http/1.0：增加POST、HEAD</li>
-<li>http/1.1：增加PUT、允许持久连接，共用一个TCP连接，多个请求不能同时接受发送数据。</li>
-<li>http/2 ：引入并发队列，缓解阻塞问题</li>
-</ul>
-</li>
-<li>常见请求状态码：<ul>
-<li>200：成功状态码</li>
-<li>403：服务器禁止访问</li>
-<li>404：NOT FOUND 服务器无法正常提供信息且不知道原因</li>
-<li>405:  方法不允许</li>
-<li>408：请求超时</li>
-<li>500：错误码，但不知道是什么错误。</li>
-</ul>
-</li>
-<li>cookie机制：HTTP是无状态、无记忆的，cookie就是让其有记忆功能。cookie由浏览器负责存储，常见应用是身份识别和广告追踪</li>
-<li>Session：Session是服务器为每个访问这个服务器的客户端用户创建的一个容器。这个容器中存储的数据能够在多个request之间实现共享。而且，这个容器只属于当前这个用户。</li>
-<li>HTTP代理：相当于服务器为请求方，相对于请求方为服务器，负责代理转发请求<h3 id="2-HTTPS"><a href="#2-HTTPS" class="headerlink" title="2.HTTPS"></a>2.HTTPS</h3></li>
-<li>HTTPS：安全套接字层超文本传输协议（hypertext transfer protocol over secure socket layer）。可以理解成HTTP+ SSL(安全套接字层)/TLS（传输层安全）。SSL和TLS依靠证书来验证服务器的身份，并在浏览器和服务器之间建立加密的通信信道。</li>
-<li>原理：浏览器与服务器建立TCP连接后，浏览器向服务器请求建立HTTPS会话，并提供客户端支持的加密算法和散列函数，服务器选择双方都支持的最强的加密算法和散列函数并通知浏览器，并将自己的证书发送给浏览器，其中包含了服务器的公钥。浏览器验证服务器证书的真实性。浏览器使用服务器的公钥来加密随机数，只有服务器的对应的私钥才能对加密的随机数进行解密。这一组加密的随机数就是服务器和浏览器的共享密钥，使用对称加密系统和消息认证码对后续消息进行加密和验证。一旦建立了安全信道，就可以开始正常的HTTP通信。</li>
-</ul>
-<h3 id="3-HTTPS的优缺点"><a href="#3-HTTPS的优缺点" class="headerlink" title="3. HTTPS的优缺点"></a>3. HTTPS的优缺点</h3><ul>
-<li>优点：  <ul>
-<li>HTTPS可以认证用户和服务器，保证数据被传输到对的用户和服务器</li>
-<li>采用加密传输，防止传输数据的泄露</li>
-</ul>
-</li>
-<li>缺点:   <ul>
-<li>SSL证书需要申请购买，增加了成本</li>
-<li>HTTPS会话建立要经过一系列的验证，比较耗时。</li>
-<li>HTTPS需要一部分服务器资源进行计算。</li>
-</ul>
-</li>
-</ul>
-
+            <h3 id="1-递归方法"><a href="#1-递归方法" class="headerlink" title="1. 递归方法 "></a>1. 递归方法
         </div>
 		
-			<ul class="post-copyright">
-				<li><strong>本文标题：</strong><a href="luckyzji.github.io/2020/09/11/HTTP%E4%B8%8EHTTPS/">HTTP与HTTPS</a></li>
-				<li><strong>本文作者：</strong><a href="luckyzji.github.io">LuckyZJ</a></li>
-				<li><strong>本文链接：</strong><a href="luckyzji.github.io/2020/09/11/HTTP%E4%B8%8EHTTPS/">luckyzji.github.io/2020/09/11/HTTP%E4%B8%8EHTTPS/</a></li>
-				<li><strong>发布时间：</strong>2020-09-11</li>
-				<li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-				</li>
-			</ul>
-		
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/http/" rel="tag">http</a>, <a class="has-link-grey -link" href="/tags/https/" rel="tag">https</a>
+                <a class="button is-size-7 is-light" href="/2020/09/27/BinaryTreeTraversal/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
 
 
+
+
+
+
+
+    
 <div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-01T13:41:00.000Z">2020-05-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 508 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/img/alipay.jpg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/img/weipay.png" alt="微信"></div>
-</a>
-
-                
+                <a class="has-link-black-ter" href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
+            
+        </h1>
+        <div class="content">
+            <p>通常情况求，我们求a<sup>b</sup>都习惯按照如下方式做：
         </div>
+		
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
-                <span class="level-item">快速幂</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
+
+
+
 
 
 </div>
@@ -323,7 +289,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -335,7 +301,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            2
+                            3
                         </p>
                     </a>
                 </div>
@@ -347,7 +313,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            6
                         </p>
                     </a>
                 </div>
@@ -433,12 +399,20 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">数据结构与算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
             <span class="level-start">
                 <span class="level-item">算法</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -459,7 +433,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">二叉树的遍历</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -474,7 +448,26 @@
         
         <article class="media">
             
-            <a href="/2020/09/11/HTTP%E4%B8%8EHTTPS/" class="media-left">
+            <a href="/2020/09/27/BinaryTreeTraversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-26T16:00:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/BinaryTreeTraversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/11/HTTP&HTTPS/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP与HTTPS">
                 </p>
@@ -483,7 +476,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-11T03:25:03.000Z">2020-09-11</time></div>
-                    <a href="/2020/09/11/HTTP%E4%B8%8EHTTPS/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP与HTTPS</a>
+                    <a href="/2020/09/11/HTTP&HTTPS/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP与HTTPS</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
                     </p>
@@ -504,7 +497,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T13:41:00.000Z">2020-05-01</time></div>
                     <a href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">快速幂</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
                     </p>
                 </div>
             </div>
@@ -546,7 +539,7 @@
                     <span class="level-item">九月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -596,6 +589,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/https/">
                         <span class="tag">https</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="tag">二叉树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">
+                        <span class="tag">二叉树的遍历</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -638,7 +645,26 @@
         
         <article class="media">
             
-            <a href="/2020/09/11/HTTP%E4%B8%8EHTTPS/" class="media-left">
+            <a href="/2020/09/27/BinaryTreeTraversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-26T16:00:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/BinaryTreeTraversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/11/HTTP&HTTPS/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP与HTTPS">
                 </p>
@@ -647,7 +673,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-11T03:25:03.000Z">2020-09-11</time></div>
-                    <a href="/2020/09/11/HTTP%E4%B8%8EHTTPS/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP与HTTPS</a>
+                    <a href="/2020/09/11/HTTP&HTTPS/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP与HTTPS</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
                     </p>
@@ -668,7 +694,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T13:41:00.000Z">2020-05-01</time></div>
                     <a href="/2020/05/01/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">快速幂</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
                     </p>
                 </div>
             </div>
@@ -710,7 +736,7 @@
                     <span class="level-item">九月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -765,6 +791,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="tag">二叉树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">
+                        <span class="tag">二叉树的遍历</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
                         <span class="tag">排序算法</span>
                         <span class="tag is-grey">1</span>
@@ -795,7 +835,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/img/logo.png" alt="HTTP与HTTPS" height="28">
+                    <img src="/images/img/logo.png" alt="LuckyZJ" height="28">
                 
                 </a>
                 <p class="is-size-7">
